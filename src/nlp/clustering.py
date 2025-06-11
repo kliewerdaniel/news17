@@ -123,7 +123,7 @@ class StreamClusterer:
         if not self.session or not self.circuit_breaker.can_execute():
             return "Summary unavailable (LLM service not configured or circuit breaker open)."
 
-        prompt = create_summary_prompt("Cluster Summary", text, None) # No persona for cluster summary
+        prompt = create_summary_prompt("Cluster Summary", text, {}) # No persona for cluster summary
 
         try:
             async with self.session.post(
